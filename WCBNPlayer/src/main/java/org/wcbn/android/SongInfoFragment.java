@@ -2,7 +2,6 @@ package org.wcbn.android;
 
 import android.app.Service;
 import android.graphics.Bitmap;
-import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -30,9 +29,9 @@ public class SongInfoFragment extends Fragment implements UiFragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_songinfo, null);
-        mSongText = (TextView) view.findViewById(R.id.song_text);
-        mArtistText = (TextView) view.findViewById(R.id.artist_text);
-        mDescriptionText = (TextView) view.findViewById(R.id.description_text);
+        mSongText = view.findViewById(R.id.song_text);
+        mArtistText = view.findViewById(R.id.artist_text);
+        mDescriptionText = view.findViewById(R.id.description_text);
 
         mSongText.setSelected(true);
         mArtistText.setSelected(true);

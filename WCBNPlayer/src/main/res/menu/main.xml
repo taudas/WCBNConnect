@@ -8,5 +8,5 @@
           android:icon="@drawable/ic_action_share"
           wcbnplayer:showAsAction="ifRoom"
           android:title="@string/action_share"
-          android:actionProviderClass="android.widget.ShareActionProvider" />
+        wcbnplayer:actionProviderClass="android.support.v7.widget.ShareActionProvider" />
 </menu>

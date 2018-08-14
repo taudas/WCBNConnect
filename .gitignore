@@ -11,8 +11,8 @@
 *.class
 
 # Private key files
-WCBNPlayer/keys_private.jks
 WCBNPlayer/keys_private.gradle
+WCBNPlayer/keystore.jks
 
 # generated files
 bin/

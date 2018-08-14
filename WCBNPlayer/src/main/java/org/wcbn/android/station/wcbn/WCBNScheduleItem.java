@@ -194,14 +194,10 @@ class WCBNScheduleItem implements Parcelable {
 
         WCBNScheduleItem other = (WCBNScheduleItem) item;
 
-        if(other.getTime().equals(mTime) &&
+        return other.getTime().equals(mTime) &&
                 other.getDj().equals(mDj) &&
                 other.getProgram().equals(mProgram) &&
-                other.getUri().equals(mUri)) {
-
-            return true;
-        }
-        return false;
+                other.getUri().equals(mUri);
     }
 
     public WCBNScheduleItem(Parcel in) {

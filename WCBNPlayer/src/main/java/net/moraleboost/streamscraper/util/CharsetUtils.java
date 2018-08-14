@@ -23,6 +23,7 @@ import java.nio.charset.CodingErrorAction;
 import java.nio.CharBuffer;
 import java.nio.ByteBuffer;
 import java.nio.charset.CharacterCodingException;
+import java.nio.charset.IllegalCharsetNameException;
 import java.nio.charset.UnsupportedCharsetException;
 
 public class CharsetUtils

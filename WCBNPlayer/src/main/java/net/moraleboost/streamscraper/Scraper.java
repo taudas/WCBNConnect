@@ -21,5 +21,5 @@ import java.util.List;
 
 public interface Scraper
 {
-    public List<Stream> scrape(URI uri) throws ScrapeException;
+    List<Stream> scrape(URI uri) throws ScrapeException;
 }

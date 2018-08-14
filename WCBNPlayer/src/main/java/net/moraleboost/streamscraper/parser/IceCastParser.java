@@ -78,8 +78,7 @@ public class IceCastParser implements Parser
         }
     }
     
-    private void parseSouce(URI uri, String src, List<Stream> streams) throws ParseException
-    {
+    private void parseSouce(URI uri, String src, List<Stream> streams) {
         List<Element> containers =
             JerichoHtmlUtils.findAllElements(
                     src, "div", "class", "newscontent");
@@ -217,8 +216,8 @@ public class IceCastParser implements Parser
     
     private boolean isNonUnicode(String contentType)
     {
-        return (contentType != null && (contentType
+        return contentType != null && (contentType
                 .equalsIgnoreCase("audio/mpeg") || contentType
-                .equalsIgnoreCase("audio/aacp"))) ? true : false;
+                .equalsIgnoreCase("audio/aacp"));
     }
 }

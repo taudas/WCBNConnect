@@ -20,6 +20,6 @@ import java.net.URI;
 
 public interface Fetcher
 {
-    public byte[] fetch(URI uri) throws FetchException;
-    public byte[] fetch(URI uri, URI proxy) throws FetchException;
+    byte[] fetch(URI uri) throws FetchException;
+    byte[] fetch(URI uri, URI proxy) throws FetchException;
 }

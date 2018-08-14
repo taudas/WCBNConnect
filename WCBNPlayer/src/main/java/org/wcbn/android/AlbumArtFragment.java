@@ -28,7 +28,7 @@ public class AlbumArtFragment extends Fragment implements UiFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_albumart, null);
-        mAlbumArtView = (RelativeLayout) view.findViewById(R.id.album_art);
+        mAlbumArtView = view.findViewById(R.id.album_art);
 
         if(mAlbumArtBitmap != null) {
             mAlbumArtView.setBackgroundDrawable(

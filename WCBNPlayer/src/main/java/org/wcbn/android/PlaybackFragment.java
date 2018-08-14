@@ -33,9 +33,9 @@ public class PlaybackFragment extends Fragment implements UiFragment {
                              Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_playback, null);
 
-        mButtonPlayPause = (ImageButton) layout.findViewById(R.id.button_play_pause);
-        mButtonStop = (ImageButton) layout.findViewById(R.id.button_stop);
-        mListenerCount = (TextView) layout.findViewById(R.id.listener_count);
+        mButtonPlayPause = layout.findViewById(R.id.button_play_pause);
+        mButtonStop = layout.findViewById(R.id.button_stop);
+        mListenerCount = layout.findViewById(R.id.listener_count);
 
         if(savedInstanceState != null && savedInstanceState.getString("listener_count") != null) {
             mListenerCount.setText(savedInstanceState.getString("listener_count"));

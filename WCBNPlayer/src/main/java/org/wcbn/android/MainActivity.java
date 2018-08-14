@@ -1,8 +1,13 @@
+//license WCBN CC-BY-NON 2018
+//original by Mike Huang 201?-2017
+//modified by Tony Audas 2018
+
 package org.wcbn.android;
 
-import android.app.ActionBar;
+import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
@@ -10,13 +15,12 @@ import android.graphics.Bitmap;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.content.Context;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,7 +38,7 @@ import org.wcbn.android.station.Station;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ActionBar.OnNavigationListener,
+public class MainActivity extends AppCompatActivity implements OnNavigationListener,
         StreamService.OnStateUpdateListener {
     private StreamService mService;
     private boolean mBound, mIsManualOpen = false;
@@ -69,8 +73,8 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         mTabNames = getResources().getStringArray(sStation.getTabNames());
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        mDrawerList = findViewById(R.id.left_drawer);
 
         // Set the adapter for the list view
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
@@ -79,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.OnNavig
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         mTitle = mDrawerTitle = getString(R.string.wcbn);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.string.drawer_open, R.string.drawer_close) {
