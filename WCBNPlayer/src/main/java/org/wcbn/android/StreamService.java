@@ -26,17 +26,17 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 
+import net.moraleboost.streamscraper.ScrapeException;
+import net.moraleboost.streamscraper.Scraper;
+import net.moraleboost.streamscraper.Stream;
+import net.moraleboost.streamscraper.scraper.IceCastScraper;
+
+import org.wcbn.android.station.Station;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-
-import net.moraleboost.streamscraper.ScrapeException;
-import net.moraleboost.streamscraper.Stream;
-import net.moraleboost.streamscraper.Scraper;
-import net.moraleboost.streamscraper.scraper.IceCastScraper;
-
-import org.wcbn.android.station.Station;
 
 /**
  * Android Service that handles background music playback and metadata fetch.
@@ -298,12 +298,15 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
         private final PendingIntent mPlayPauseIntent, mStopIntent;
 
         NotificationHelper() {
+            String channelId = "1";
             mBuilderPlaying = new NotificationCompat.Builder(getApplicationContext())
+                    .setChannelId(channelId)
                 .setOngoing(true)
                 .setOnlyAlertOnce(true)
                 .setWhen(0)
                 .setSmallIcon(R.drawable.ic_stat_notify_notification);
             mBuilderPaused = new NotificationCompat.Builder(getApplicationContext())
+                    .setChannelId(channelId)
                 .setOngoing(true)
                 .setOnlyAlertOnce(true)
                 .setWhen(0)
