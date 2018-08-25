@@ -30,6 +30,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.crashlytics.android.Crashlytics;
+
 import net.moraleboost.streamscraper.Stream;
 
 import org.wcbn.android.StreamService.StreamBinder;
@@ -37,6 +39,8 @@ import org.wcbn.android.station.Station;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity implements OnNavigationListener,
         StreamService.OnStateUpdateListener {
@@ -66,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements OnNavigationListe
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
 
         setVolumeControlStream(AudioManager.STREAM_MUSIC);

@@ -34,6 +34,9 @@
                 android:name="org.wcbn.android.StreamService"
                 android:label="@string/app_name" >
         </service>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="fe3dc07a8f47f1dcad058ca86247ff2863d97444" />
     </application>
 
 </manifest>
