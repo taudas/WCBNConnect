@@ -85,7 +85,7 @@ android {
         variant.outputs.all { output ->
 //            outputFileName = $(variant.baseName)+"-"+$(variant.versionName)+".apk"
 //              outputFileName = (variant.versionName)+".apk"
-            outputFileName = "${variant.flavorName}-${variant.versionName}.apk"
+            outputFileName = "WCBN-${variant.versionName}.apk"
         }
     }
 
