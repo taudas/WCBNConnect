@@ -1,6 +1,7 @@
 package org.wcbn.android;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -38,6 +39,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
+import static android.os.Build.VERSION;
+import static android.os.Build.VERSION_CODES;
+
 /**
  * Android Service that handles background music playback and metadata fetch.
  */
@@ -47,7 +52,7 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
 
     public static final String ACTION_PLAY_PAUSE = "org.wcbn.android.intent.ACTION_PLAY_PAUSE";
     public static final String ACTION_STOP = "org.wcbn.android.intent.ACTION_STOP";
-
+    public static final String NOTIFICATION_CHANNEL_ID = "com.wcbn.WCBNPlayer.service";
     public static final long DELAY_MS = 10000;
 
     // TODO: Move quality handling to WCBN-specific code.
@@ -279,7 +284,9 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
 
         mNotificationHelper = new NotificationHelper();
         mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-
+        if (VERSION.SDK_INT >= VERSION_CODES.O) {
+            mNotificationManager.createNotificationChannel(new NotificationChannel(NOTIFICATION_CHANNEL_ID, "WCBN Service", IMPORTANCE_DEFAULT));
+            }
         return mBinder;
     }
 
