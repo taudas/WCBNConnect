@@ -3,6 +3,8 @@
 *.ap_
 
 *.DS_Store
+*.json
+
 
 # files for the dex VM
 *.dex
@@ -12,7 +14,7 @@
 
 # Private key files
 WCBNPlayer/keys_private.gradle
-WCBNPlayer/keystore.jks
+WCBNPlayer/wcbn_keystore.jks
 
 # generated files
 bin/
@@ -34,4 +36,5 @@ WCBNPlayer/gradlew.bat
 WCBNPlayer/gradlew
 WCBNPlayer/local.properties
 WCBNPlayer/.idea
-*.json
+WCBNPlayer/wcbn_deploy/
+
