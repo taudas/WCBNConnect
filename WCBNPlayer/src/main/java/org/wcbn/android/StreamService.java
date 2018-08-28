@@ -305,15 +305,15 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
         private final PendingIntent mPlayPauseIntent, mStopIntent;
 
         NotificationHelper() {
-            String channelId = "1";
+//            String channelId = "1";
             mBuilderPlaying = new NotificationCompat.Builder(getApplicationContext())
-                    .setChannelId(channelId)
+//                .setChannelId(channelId)
                 .setOngoing(true)
                 .setOnlyAlertOnce(true)
                 .setWhen(0)
                 .setSmallIcon(R.drawable.ic_stat_notify_notification);
             mBuilderPaused = new NotificationCompat.Builder(getApplicationContext())
-                    .setChannelId(channelId)
+//                .setChannelId(channelId)
                 .setOngoing(true)
                 .setOnlyAlertOnce(true)
                 .setWhen(0)
