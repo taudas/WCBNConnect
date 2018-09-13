@@ -18,7 +18,6 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Binder;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -71,11 +70,11 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
     public void onCreate() {
 
         super.onCreate();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            nm.createNotificationChannel(new NotificationChannel(NOTIFICATION_CHANNEL_ID, "WCBNPlayer Service", NotificationManager.IMPORTANCE_DEFAULT));
-//
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//            nm.createNotificationChannel(new NotificationChannel(NOTIFICATION_CHANNEL_ID, "WCBNPlayer Service", NotificationManager.IMPORTANCE_DEFAULT));
+////
+//        }
     }
 
 //} else {
