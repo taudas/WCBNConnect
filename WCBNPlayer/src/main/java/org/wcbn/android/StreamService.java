@@ -1,7 +1,6 @@
 package org.wcbn.android;
 
 import android.app.Notification;
-import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -39,10 +38,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
-import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
-import static android.os.Build.VERSION;
-import static android.os.Build.VERSION_CODES;
-
 /**
  * Android Service that handles background music playback and metadata fetch.
  */
@@ -66,16 +61,16 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
         }
     }
 
-    @Override
-    public void onCreate() {
-
-        super.onCreate();
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-//            nm.createNotificationChannel(new NotificationChannel(NOTIFICATION_CHANNEL_ID, "WCBNPlayer Service", NotificationManager.IMPORTANCE_DEFAULT));
-////
-//        }
-    }
+//    @Override
+//    public void onCreate() {
+//
+//        super.onCreate();
+////        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+////            NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+////            nm.createNotificationChannel(new NotificationChannel(NOTIFICATION_CHANNEL_ID, "WCBNPlayer Service", NotificationManager.IMPORTANCE_DEFAULT));
+//////
+////        }
+//    }
 
 //} else {
 //            Notification notification = new Notification();
@@ -298,9 +293,9 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
 
         mNotificationHelper = new NotificationHelper();
         mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        if (VERSION.SDK_INT >= VERSION_CODES.O) {
-            mNotificationManager.createNotificationChannel(new NotificationChannel(NOTIFICATION_CHANNEL_ID, "WCBN Service", IMPORTANCE_DEFAULT));
-            }
+//        if (VERSION.SDK_INT >= VERSION_CODES.O) {
+//            mNotificationManager.createNotificationChannel(new NotificationChannel(NOTIFICATION_CHANNEL_ID, "WCBN Service", IMPORTANCE_DEFAULT));
+//            }
         return mBinder;
     }
 
