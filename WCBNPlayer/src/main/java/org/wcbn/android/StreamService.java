@@ -53,28 +53,14 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
     // TODO: Move quality handling to WCBN-specific code.
     public static class Quality {
         public static final String MID = "0";
-        public static final String HI = "1";
+        static final String HI = "1";
         public static final String HD = "2";
 
-        public static String getUri(String quality, Resources res) {
+        static String getUri(String quality, Resources res) {
             return res.getStringArray(R.array.stream_uri)[Integer.parseInt(quality)];
         }
     }
 
-//    @Override
-//    public void onCreate() {
-//
-//        super.onCreate();
-////        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-////            NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-////            nm.createNotificationChannel(new NotificationChannel(NOTIFICATION_CHANNEL_ID, "WCBNPlayer Service", NotificationManager.IMPORTANCE_DEFAULT));
-//////
-////        }
-//    }
-
-//} else {
-//            Notification notification = new Notification();
-//            startForeground(1, notification);
     @Override
     public void onAudioFocusChange(int focusChange) {
         switch (focusChange) {
@@ -126,7 +112,7 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
         mStation = Utils.getStation();
     }
 
-    public class StreamBinder extends Binder {
+    class StreamBinder extends Binder {
         StreamService getService() {
             return StreamService.this;
         }
@@ -208,8 +194,11 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
     public void startPlayback() {
 
         AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        int result = audioManager.requestAudioFocus(this, AudioManager.STREAM_MUSIC,
-                AudioManager.AUDIOFOCUS_GAIN);
+        int result = 0;
+        if (audioManager != null) {
+            result = audioManager.requestAudioFocus(this, AudioManager.STREAM_MUSIC,
+                    AudioManager.AUDIOFOCUS_GAIN);
+        }
 
         if (result != AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
             return;

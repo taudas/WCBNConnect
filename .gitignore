@@ -36,5 +36,4 @@ WCBNPlayer/gradlew.bat
 WCBNPlayer/gradlew
 WCBNPlayer/local.properties
 WCBNPlayer/.idea
-WCBNPlayer/wcbn_deploy/
-
+WCBNPlayer/wcbn_deploy
