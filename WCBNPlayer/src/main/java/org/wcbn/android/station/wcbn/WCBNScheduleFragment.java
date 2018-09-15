@@ -36,7 +36,7 @@ import java.util.regex.Pattern;
 public class WCBNScheduleFragment extends Fragment implements UiFragment {
 
     // TODO: Parse the entire table (from the Google Calendar?).
-    // We're hardcoding three entires for now.
+    // We're hardcoding three entries for now.
     // Persistence is done pretty badly right now.
 
     public static final int NUM_ENTRIES = 3;

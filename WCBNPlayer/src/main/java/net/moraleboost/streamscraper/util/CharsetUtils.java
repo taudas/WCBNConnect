@@ -40,7 +40,7 @@ public class CharsetUtils
      * @throws UnsupportedCharsetException
      *             The JVM does not support the charset.
      * @throws IllegalArgumentException
-     *             An invalid CondingErrorAction value was specified.
+     *             An invalid CodingErrorAction value was specified.
      */
     public static CharsetEncoder createEncoder(String charset,
             CodingErrorAction malformedInputAction,

@@ -22,7 +22,6 @@ public class AlbumArtFragment extends Fragment implements UiFragment {
 
     private RelativeLayout mAlbumArtView;
     private Bitmap mAlbumArtBitmap;
-    private StreamService mService;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,7 +53,7 @@ public class AlbumArtFragment extends Fragment implements UiFragment {
 
     @Override
     public void setService(Service service) {
-        mService = (StreamService) service;
+        StreamService mService = (StreamService) service;
 
         mAlbumArtBitmap = mService.getAlbumArt();
     }

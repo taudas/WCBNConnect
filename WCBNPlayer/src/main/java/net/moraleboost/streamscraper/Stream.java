@@ -100,7 +100,7 @@ public class Stream implements Serializable
         }
     }
     
-    public String getTitle()
+    protected String getTitle()
     {
         return title;
     }
@@ -110,7 +110,7 @@ public class Stream implements Serializable
         this.title = title;
     }
     
-    public String getDescription()
+    protected String getDescription()
     {
         return description;
     }
@@ -120,7 +120,7 @@ public class Stream implements Serializable
         this.description = description;
     }
     
-    public URI getUri()
+    protected URI getUri()
     {
         return uri;
     }
@@ -160,7 +160,7 @@ public class Stream implements Serializable
         this.peakListenerCount = peakListenerCount;
     }
     
-    public String getBitRate()
+    protected String getBitRate()
     {
         return bitRate;
     }
@@ -190,7 +190,7 @@ public class Stream implements Serializable
         this.contentType = contentType;
     }
     
-    public String getGenre()
+    protected String getGenre()
     {
         return genre;
     }

@@ -2,7 +2,6 @@ package org.wcbn.android.station.wcbn;
 
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
@@ -14,6 +13,7 @@ import org.wcbn.android.R;
 import org.wcbn.android.Utils;
 
 import java.util.List;
+import java.util.Objects;
 
 public class WCBNPlaylistItem implements Parcelable {
 
@@ -55,7 +55,7 @@ public class WCBNPlaylistItem implements Parcelable {
         LayoutInflater inflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View view = inflater.inflate(R.layout.item_playlist, null);
+        View view = Objects.requireNonNull(inflater).inflate(R.layout.item_playlist, null);
 
         ((TextView) view.findViewById(R.id.time_text)).setText(mTime);
         ((TextView) view.findViewById(R.id.artist_text)).setText(Utils.capitalizeTitle(mArtist));

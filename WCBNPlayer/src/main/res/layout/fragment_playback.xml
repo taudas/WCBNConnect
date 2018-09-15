@@ -19,14 +19,14 @@
                 android:id="@+id/button_play_pause"
                 android:background="?android:attr/selectableItemBackground"
                 android:layout_gravity="center"
-                />
+            android:contentDescription="TODO" />
         <ImageButton
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:id="@+id/button_stop"
                 android:background="?android:attr/selectableItemBackground"
                 android:layout_gravity="center"
-                />
+            android:contentDescription="TODO" />
 </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:orientation="horizontal"

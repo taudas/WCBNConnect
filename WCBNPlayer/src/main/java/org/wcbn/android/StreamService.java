@@ -37,21 +37,22 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Android Service that handles background music playback and metadata fetch.
  */
 public class StreamService extends Service implements AudioManager.OnAudioFocusChangeListener {
 
-    public static final String TAG = "WCBNStreamService";
+    private static final String TAG = "WCBNStreamService";
 
-    public static final String ACTION_PLAY_PAUSE = "org.wcbn.android.intent.ACTION_PLAY_PAUSE";
-    public static final String ACTION_STOP = "org.wcbn.android.intent.ACTION_STOP";
+    private static final String ACTION_PLAY_PAUSE = "org.wcbn.android.intent.ACTION_PLAY_PAUSE";
+    private static final String ACTION_STOP = "org.wcbn.android.intent.ACTION_STOP";
     public static final String NOTIFICATION_CHANNEL_ID = "com.wcbn.WCBNPlayer.service";
-    public static final long DELAY_MS = 10000;
+    private static final long DELAY_MS = 10000;
 
     // TODO: Move quality handling to WCBN-specific code.
-    public static class Quality {
+    static class Quality {
         public static final String MID = "0";
         static final String HI = "1";
         public static final String HD = "2";
@@ -95,12 +96,12 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
     private MediaPlayer mPlayer;
     private final IBinder mBinder = new StreamBinder();
     private OnStateUpdateListener mUpdateListener;
-    private Handler mMetadataHandler = new Handler();
-    private Runnable mMetadataRunnable = new MetadataUpdateRunnable();
+    private final Handler mMetadataHandler = new Handler();
+    private final Runnable mMetadataRunnable = new MetadataUpdateRunnable();
     private NotificationHelper mNotificationHelper;
     private NotificationManager mNotificationManager;
-    private Scraper mScraper = new IceCastScraper();
-    private Station mStation;
+    private final Scraper mScraper = new IceCastScraper();
+    private final Station mStation;
     private Bitmap mLargeAlbumArt;
     private StreamExt mCurStream;
     private boolean mIsPaused = true, mIsPreparing = false, mIsForeground = false, mRefresh = false,
@@ -118,7 +119,7 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
         }
     }
 
-    public void reset() {
+    private void reset() {
         stopForeground(true);
         mPlayer.release();
         initPlayer();
@@ -129,20 +130,21 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
         public void onReceive(Context context, Intent intent) {
             Log.d(TAG, intent.getAction());
 
-            if(ACTION_PLAY_PAUSE.equals(intent.getAction())) {
-                if(mIsPaused) {
-                    startPlayback();
-                }
-                else {
-                    pausePlayback();
-                }
-            }
-            else if(ACTION_STOP.equals(intent.getAction())) {
-                stopPlayback();
-            }
-            else if(AudioManager.ACTION_AUDIO_BECOMING_NOISY.equals(intent.getAction())) {
-                if(!mIsPaused)
-                    pausePlayback();
+            switch (Objects.requireNonNull(intent.getAction())) {
+                case ACTION_PLAY_PAUSE:
+                    if (mIsPaused) {
+                        startPlayback();
+                    } else {
+                        pausePlayback();
+                    }
+                    break;
+                case ACTION_STOP:
+                    stopPlayback();
+                    break;
+                case AudioManager.ACTION_AUDIO_BECOMING_NOISY:
+                    if (!mIsPaused)
+                        pausePlayback();
+                    break;
             }
         }
     };
@@ -251,7 +253,7 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
         return mIsPreparing;
     }
 
-    public void initPlayer() {
+    private void initPlayer() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         mPlayer = new MediaPlayer();
@@ -359,24 +361,24 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
             mCurrentBuilder.setSubText(mSubText);
         }
 
-        public void setBitmap(Bitmap icon) {
+        void setBitmap(Bitmap icon) {
             mIcon = icon;
         }
 
-        public void setTitle(String title) {
+        void setTitle(String title) {
             mTitle = title;
         }
 
-        public void setText(String text) {
+        void setText(String text) {
             mText = text;
         }
 
-        public void setSubText(String subText) {
+        void setSubText(String subText) {
             mSubText = subText;
         }
 
         // Notification action update. Only available on JELLY_BEAN and above.
-        public void setPlaying(boolean playing) {
+        void setPlaying(boolean playing) {
             if(playing) {
                 mCurrentBuilder = mBuilderPlaying;
             }
@@ -385,7 +387,7 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
             }
         }
 
-        public Notification getNotification() {
+        Notification getNotification() {
             updateBuilder();
             return mCurrentBuilder.build();
         }
@@ -430,10 +432,7 @@ public class StreamService extends Service implements AudioManager.OnAudioFocusC
                     return stream;
                 }
                 return null;
-            } catch(URISyntaxException e) {
-                e.printStackTrace();
-                return null;
-            } catch(ScrapeException e) {
+            } catch(URISyntaxException | ScrapeException e) {
                 e.printStackTrace();
                 return null;
             }

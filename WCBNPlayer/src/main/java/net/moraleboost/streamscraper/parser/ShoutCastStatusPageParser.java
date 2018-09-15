@@ -16,17 +16,17 @@
  */
 package net.moraleboost.streamscraper.parser;
 
-import java.net.URI;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CodingErrorAction;
-import java.util.LinkedList;
-import java.util.List;
-
 import net.moraleboost.streamscraper.ParseException;
 import net.moraleboost.streamscraper.Parser;
 import net.moraleboost.streamscraper.Stream;
 import net.moraleboost.streamscraper.util.CharsetUtils;
 import net.moraleboost.streamscraper.util.JerichoHtmlUtils;
+
+import java.net.URI;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ShoutCastStatusPageParser implements Parser
 {
@@ -69,7 +69,7 @@ public class ShoutCastStatusPageParser implements Parser
         stream.setUri(uri.resolve("/"));
 
         List<org.jsoup.nodes.Element> tables =
-            JerichoHtmlUtils.findAllElements(src.toString(), "table", "align", "center");
+            JerichoHtmlUtils.findAllElements(src, "table", "align", "center");
         
         for (org.jsoup.nodes.Element table: tables) {
             if (parseTable2(uri, table, stream)) {

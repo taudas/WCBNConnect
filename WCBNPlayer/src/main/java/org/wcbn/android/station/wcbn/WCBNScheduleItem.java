@@ -17,6 +17,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.wcbn.android.R;
 
+import java.util.Objects;
 import java.util.regex.Matcher;
 
 class WCBNScheduleItem implements Parcelable {
@@ -121,7 +122,7 @@ class WCBNScheduleItem implements Parcelable {
 
     public void initViews(Context context) {
         mInflater = (LayoutInflater) context.getSystemService(Service.LAYOUT_INFLATER_SERVICE);
-        mView = (ViewGroup) mInflater.inflate(R.layout.item_schedule, null);
+        mView = (ViewGroup) Objects.requireNonNull(mInflater).inflate(R.layout.item_schedule, null);
 
         ((TextView) mView.findViewById(R.id.time_text)).setTypeface(mTypeface);
         ((TextView) mView.findViewById(R.id.program_text)).setTypeface(mTypeface);
