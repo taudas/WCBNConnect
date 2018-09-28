@@ -24,8 +24,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.wcbn.android.R;
 import org.wcbn.android.StreamService;
-import org.wcbn.android.station.Station;
 import org.wcbn.android.UiFragment;
+import org.wcbn.android.station.Station;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class WCBNPlaylistFragment extends ListFragment implements UiFragment {
     private List<WCBNPlaylistItem> mItems;
     public static final String TAG = "WCBNPlaylistFragment";
     public static final String PLAYLIST_URI
-            = "http://wcbn.org/ryan-playlist/searchplaylist.php?howmany=5&unit=hour";
+            = "https://app.wcbn.org/#now";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

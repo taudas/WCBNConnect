@@ -25,8 +25,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.wcbn.android.R;
 import org.wcbn.android.StreamService;
-import org.wcbn.android.station.Station;
 import org.wcbn.android.UiFragment;
+import org.wcbn.android.station.Station;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ public class WCBNScheduleFragment extends Fragment implements UiFragment {
 
     public static final int NUM_ENTRIES = 3;
     public static final String TAG = "WCBNScheduleFragment";
-    public static final String SCHEDULE_URI = "http://wcbn.org/schedule";
+    public static final String SCHEDULE_URI = "https://app.wcbn.org/semesters";
     private List<WCBNScheduleItem> mItems;
     private StreamService mService;
     private LinearLayout mView;

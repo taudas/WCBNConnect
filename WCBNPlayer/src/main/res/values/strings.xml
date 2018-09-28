@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="version_code">110</string>
+    <string name="version_code">124</string>
     <string name="version_current">2.0.0</string>
 
     <string name="on">on</string>
@@ -66,8 +66,8 @@
     </string-array>
 
     <string-array name="quality_pref">
-        <item>Low quality</item>
-        <item>High quality</item>
+        <item>Lo-fi quality</item>
+        <item>Hi-fi quality</item>
         <item>Maximum quality</item>
     </string-array>
 

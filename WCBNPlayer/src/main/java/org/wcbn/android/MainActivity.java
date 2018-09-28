@@ -303,6 +303,7 @@ public class MainActivity extends AppCompatActivity implements OnNavigationListe
         }
     };
 
+
     @Override
     public void onMediaError(MediaPlayer mp, int what, int extra) {
         setProgressBarIndeterminateVisibility(false);

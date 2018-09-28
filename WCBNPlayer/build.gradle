@@ -30,13 +30,7 @@ dependencies {
     }
 }
 
-if(file("keys_private.gradle").exists()) {
-    apply from: 'keys_private.gradle'
-}
-else {
-    logger.warn('DANGER: USING DEFAULT KEYS!!! SEE keys_default.gradle')
-    apply from: 'keys_default.gradle'
-}
+
 
 def getVersionName = { ->
     def stdout = new ByteArrayOutputStream()
@@ -52,19 +46,14 @@ android {
     buildToolsVersion '27.0.3'
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 16
         targetSdkVersion 26
     }
 
     signingConfigs {
-        release_test {
-            storeFile keyFileTest
-            storePassword storePassTest
-            keyAlias keyAliasTest
-            keyPassword keyPassTest
-        }
+
         release {
-            storeFile file('C:/Users/owner/Desktop/CURRENT/wcbnplayer/WCBNPlayer/wcbn_keystore.jks')
+            storeFile file('C:/Users/owner/Desktop/CURRENT/wcbnconnect/WCBNPlayer/wcbn_keystore.jks')
             storePassword 'wcbnwcbnfm'
             keyAlias 'key0'
             keyPassword 'wcbnwcbnfm'
@@ -95,13 +84,10 @@ android {
 
     productFlavors {
         wcbn_deploy {
-            applicationId "org.wcbn.player"
+            applicationId "org.wcbn.connect"
             signingConfig signingConfigs.release
         }
         // Alpha/beta testing package name for Google Play
-        wcbn_testing {
-            applicationId "org.wcbntest.android"
-            signingConfig signingConfigs.release_test
-        }
+
     }
 }

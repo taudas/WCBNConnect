@@ -5,20 +5,18 @@ import android.util.Log;
 
 import net.moraleboost.streamscraper.Stream;
 
-import org.jsoup.nodes.Element;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.wcbn.android.AlbumArtFragment;
 import org.wcbn.android.R;
-import org.wcbn.android.station.Station;
 import org.wcbn.android.StreamExt;
 import org.wcbn.android.UiFragment;
 import org.wcbn.android.Utils;
+import org.wcbn.android.station.Station;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 
 public class WCBNStation implements Station {
 
@@ -30,7 +28,7 @@ public class WCBNStation implements Station {
     public static final int FACEBOOK = R.string.wcbn_facebook_uri;
     public static final int TAB_NAMES = R.array.wcbn_tab_names;
     public static final String PLAYLIST_URI
-            = "https://wcbn-readback.herokuapp.com/#now";
+            = "https://app.wcbn.org/#now";
 
     static final List<Class<? extends UiFragment>> sFragments =
             new ArrayList<>();
