@@ -16,6 +16,14 @@
  */
 package net.moraleboost.streamscraper.parser;
 
+import net.moraleboost.streamscraper.ParseException;
+import net.moraleboost.streamscraper.Parser;
+import net.moraleboost.streamscraper.Stream;
+import net.moraleboost.streamscraper.util.CharsetUtils;
+import net.moraleboost.streamscraper.util.JerichoHtmlUtils;
+
+import org.jsoup.nodes.Element;
+
 import java.net.URI;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CodingErrorAction;
@@ -23,14 +31,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.jsoup.nodes.Element;
-
-import net.moraleboost.streamscraper.ParseException;
-import net.moraleboost.streamscraper.Parser;
-import net.moraleboost.streamscraper.Stream;
-import net.moraleboost.streamscraper.util.CharsetUtils;
-import net.moraleboost.streamscraper.util.JerichoHtmlUtils;
 
 public class IceCastParser implements Parser
 {
