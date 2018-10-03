@@ -6,12 +6,14 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
-        classpath 'io.fabric.tools:gradle:1.+'
+        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath 'io.fabric.tools:gradle:1.26.1'
+        classpath 'com.google.gms:google-services:4.0.1'
     }
 }
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
+apply plugin: 'com.google.gms.google-services'
 
 repositories {
     mavenCentral()
@@ -22,12 +24,14 @@ repositories {
 
 dependencies {
     implementation fileTree(include: '*.jar', dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.squareup.okhttp:okhttp:2.5.0'
-    implementation 'com.android.support:design:27.1.1'
-    implementation ('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
+    implementation 'com.android.support:design:28.0.0'
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
         transitive = true
     }
+    implementation 'com.google.firebase:firebase-core:16.0.3'
+    implementation 'com.google.firebase:firebase-crash:16.2.0'
 }
 
 
@@ -43,7 +47,7 @@ def getVersionName = { ->
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.2'
 
     defaultConfig {
         minSdkVersion 16
@@ -62,11 +66,11 @@ android {
 
     buildTypes {
         release {
-            versionNameSuffix "_rel"+"-"+getVersionName()
+            versionNameSuffix "_rel" + "-" + getVersionName()
         }
 
         debug {
-            versionNameSuffix "_debug"+"-"+getVersionName()
+            versionNameSuffix "_debug" + "-" + getVersionName()
         }
     }
 
